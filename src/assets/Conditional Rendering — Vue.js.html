@@ -1,0 +1,1115 @@
+<!DOCTYPE html>
+<!-- saved from url=(0053)https://vuejs.org/v2/guide/conditional.html#v-else-if -->
+<html lang="en"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <title>Conditional Rendering — Vue.js</title>
+    
+    <meta name="description" content="Vue.js - The Progressive JavaScript Framework">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+
+    <link rel="alternate" hreflang="x-default" href="https://vuejs.org/v2/guide/conditional.html">
+    <link rel="alternate" hreflang="zh" href="https://cn.vuejs.org/v2/guide/conditional.html">
+    <link rel="alternate" hreflang="ja" href="https://jp.vuejs.org/v2/guide/conditional.html">
+    <link rel="alternate" hreflang="ru" href="https://ru.vuejs.org/v2/guide/conditional.html">
+    <link rel="alternate" hreflang="ko" href="https://kr.vuejs.org/v2/guide/conditional.html">
+    <link rel="alternate" hreflang="pt-BR" href="https://br.vuejs.org/v2/guide/conditional.html">
+    <link rel="alternate" hreflang="fr" href="https://fr.vuejs.org/v2/guide/conditional.html">
+
+    <meta property="og:type" content="article">
+    <meta property="og:title" content="Conditional Rendering — Vue.js">
+    <meta property="og:description" content="Vue.js - The Progressive JavaScript Framework">
+    <meta property="og:image" content="https://vuejs.org//images/logo.png">
+
+    <meta name="twitter:card" content="summary">
+    <meta name="twitter:title" content="Conditional Rendering — Vue.js">
+    <meta name="twitter:description" content="Vue.js - The Progressive JavaScript Framework">
+    <meta name="twitter:image" content="https://vuejs.org/images/logo.png">
+
+    <link rel="apple-touch-icon" sizes="57x57" href="https://vuejs.org/images/icons/apple-icon-57x57.png">
+    <link rel="apple-touch-icon" sizes="60x60" href="https://vuejs.org/images/icons/apple-icon-60x60.png">
+    <link rel="apple-touch-icon" sizes="72x72" href="https://vuejs.org/images/icons/apple-icon-72x72.png">
+    <link rel="apple-touch-icon" sizes="76x76" href="https://vuejs.org/images/icons/apple-icon-76x76.png">
+    <link rel="apple-touch-icon" sizes="114x114" href="https://vuejs.org/images/icons/apple-icon-114x114.png">
+    <link rel="apple-touch-icon" sizes="120x120" href="https://vuejs.org/images/icons/apple-icon-120x120.png">
+    <link rel="apple-touch-icon" sizes="144x144" href="https://vuejs.org/images/icons/apple-icon-144x144.png">
+    <link rel="apple-touch-icon" sizes="152x152" href="https://vuejs.org/images/icons/apple-icon-152x152.png">
+    <link rel="apple-touch-icon" sizes="180x180" href="https://vuejs.org/images/icons/apple-icon-180x180.png">
+    <link rel="icon" type="image/png" sizes="192x192" href="https://vuejs.org/images/icons/android-icon-192x192.png">
+    <link rel="icon" type="image/png" sizes="32x32" href="https://vuejs.org/images/icons/favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="96x96" href="https://vuejs.org/images/icons/favicon-96x96.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="https://vuejs.org/images/icons/favicon-16x16.png">
+    <meta name="msapplication-TileImage" content="/images/icons/ms-icon-144x144.png">
+    <link rel="icon" href="./Conditional Rendering — Vue.js_files/logo.png" type="image/png">
+
+    <meta name="msapplication-TileColor" content="#4fc08d">
+    <meta name="theme-color" content="#4fc08d">
+
+    <meta name="msapplication-config" content="browserconfig.xml">
+    <link rel="manifest" href="https://vuejs.org/manifest.json">
+
+    <link href="./Conditional Rendering — Vue.js_files/css" rel="stylesheet" type="text/css">
+    <link href="./Conditional Rendering — Vue.js_files/css(1)" rel="stylesheet" type="text/css">
+
+    <link href="./Conditional Rendering — Vue.js_files/font-awesome.min.css" rel="stylesheet" type="text/css">
+
+    <!-- main page styles -->
+    <link rel="stylesheet" href="./Conditional Rendering — Vue.js_files/page.css">
+
+    <!-- this needs to be loaded before guide's inline scripts -->
+    <script async="" src="./Conditional Rendering — Vue.js_files/analytics.js"></script><script src="./Conditional Rendering — Vue.js_files/vue.js"></script>
+    <script>window.PAGE_TYPE = "guide"</script>
+
+    <!-- ga -->
+    <script>
+      (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+      (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+      m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+      })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+      ga('create', 'UA-46852172-1', 'vuejs.org');
+      ga('send', 'pageview');
+    </script>
+
+    <!-- vimeo analytics -->
+    <script type="text/javascript" defer="defer" src="./Conditional Rendering — Vue.js_files/72160148.js"></script>
+  <script id="_carbonads_projs" type="text/javascript" src="./Conditional Rendering — Vue.js_files/C6AILKT.json"></script><script id="_bsa_srv-CKYD62QM_0" type="text/javascript" src="./Conditional Rendering — Vue.js_files/CKYD62QM.json"></script></head>
+  <body class="docs vsc-initialized" cz-shortcut-listen="true">
+    <div id="mobile-bar">
+      <a class="menu-button"></a>
+      <a class="logo" href="https://vuejs.org/"></a>
+    </div>
+    <div id="header">
+  <a id="logo" href="https://vuejs.org/">
+    <img src="./Conditional Rendering — Vue.js_files/logo.png">
+    <span>Vue.js</span>
+  </a>
+  <ul id="nav">
+    <li>
+  <form id="search-form">
+    <span class="algolia-autocomplete" style="position: relative; display: inline-block; direction: ltr;"><input type="text" id="search-query-nav" class="search-query st-default-search-input aa-input" autocomplete="off" spellcheck="false" role="combobox" aria-autocomplete="list" aria-expanded="false" aria-owns="algolia-autocomplete-listbox-0" dir="auto" style="position: relative; vertical-align: top;"><pre aria-hidden="true" style="position: absolute; visibility: hidden; white-space: pre; font-family: system-ui; font-size: 11px; font-style: normal; font-variant: normal; font-weight: 400; word-spacing: 0px; letter-spacing: normal; text-indent: 0px; text-rendering: auto; text-transform: none;"></pre><span class="aa-dropdown-menu" role="listbox" id="algolia-autocomplete-listbox-0" style="position: absolute; top: 100%; z-index: 100; display: none; left: 0px; right: auto;"><div class="aa-dataset-1"></div></span></span>
+  </form>
+</li>
+<li class="nav-dropdown-container learn">
+  <a class="nav-link current">Learn</a><span class="arrow"></span>
+  <ul class="nav-dropdown">
+    <li><ul>
+      <li><a href="https://vuejs.org/v2/guide/" class="nav-link current">Guide</a></li>
+      <li><a href="https://vuejs.org/v2/api/" class="nav-link">API</a></li>
+      <li><a href="https://vuejs.org/v2/style-guide/" class="nav-link">Style Guide</a></li>
+      <li><a href="https://vuejs.org/v2/examples/" class="nav-link">Examples</a></li>
+      <li><a href="https://vuejs.org/v2/cookbook/" class="nav-link">Cookbook</a></li>
+    </ul></li>
+  </ul>
+</li>
+
+<li class="nav-dropdown-container ecosystem">
+  <a class="nav-link">Ecosystem</a><span class="arrow"></span>
+  <ul class="nav-dropdown">
+    <li><h4>Help</h4></li>
+    <li><ul>
+      <li><a href="https://forum.vuejs.org/" class="nav-link" target="_blank">Forum</a></li>
+      <li><a href="https://chat.vuejs.org/" class="nav-link" target="_blank">Chat</a></li>
+    </ul></li>
+    <li><h4>Tooling</h4></li>
+    <li>
+      <ul>
+        <li><a href="https://github.com/vuejs/vue-devtools" class="nav-link" target="_blank">Devtools</a></li>
+        <li><a href="https://vuejs-templates.github.io/webpack" class="nav-link" target="_blank">Webpack Template</a></li>
+        <li><a href="https://vue-loader.vuejs.org/" class="nav-link" target="_blank">Vue Loader</a></li>
+      </ul>
+    </li>
+    <li><h4>Core Libraries</h4></li>
+    <li><ul>
+      <li><a href="https://router.vuejs.org/" class="nav-link" target="_blank">Vue Router</a></li>
+      <li><a href="https://vuex.vuejs.org/" class="nav-link" target="_blank">Vuex</a></li>
+      <li><a href="https://ssr.vuejs.org/" class="nav-link" target="_blank">Vue Server Renderer</a></li>
+    </ul></li>
+    <li><h4>News</h4></li>
+    <li><ul>
+      <li><a href="https://news.vuejs.org/" class="nav-link" target="_blank">Weekly News</a></li>
+      <li><a href="https://github.com/vuejs/roadmap" class="nav-link" target="_blank">Roadmap</a></li>
+      <li><a href="https://twitter.com/vuejs" class="nav-link" target="_blank">Twitter</a></li>
+      <li><a href="https://medium.com/the-vue-point" class="nav-link" target="_blank">Blog</a></li>
+      <li><a href="https://vuejobs.com/?ref=vuejs" class="nav-link" target="_blank">Jobs</a></li>
+    </ul></li>
+    <li><h4>Resource Lists</h4></li>
+    <li><ul>
+      <li><a href="https://github.com/vuejs" class="nav-link" target="_blank">Official Repos</a></li>
+      <li><a href="https://curated.vuejs.org/" class="nav-link" target="_blank">Vue Curated</a></li>
+      <li><a href="https://github.com/vuejs/awesome-vue" class="nav-link" target="_blank">Awesome Vue</a></li>
+    </ul></li>
+  </ul>
+</li>
+
+<li>
+  <a href="https://vuejs.org/v2/guide/team.html" class="nav-link team">Team</a>
+</li>
+<li class="nav-dropdown-container support-vue">
+  <a href="https://vuejs.org/support-vuejs/" class="nav-link">Support Vue</a><span class="arrow"></span>
+  <ul class="nav-dropdown">
+    <li><ul>
+      <li><a href="https://vuejs.org/support-vuejs/#One-time-Donations" class="nav-link">One-time Donations</a></li>
+      <li><a href="https://vuejs.org/support-vuejs/#Recurring-Pledges" class="nav-link">Recurring Pledges</a></li>
+      <li><a href="https://vue.threadless.com/" target="_blank" class="nav-link">T-Shirt Shop</a></li>
+    </ul></li>
+  </ul>
+</li>
+
+<li class="nav-dropdown-container language">
+  <a class="nav-link">Translations</a><span class="arrow"></span>
+  <ul class="nav-dropdown">
+    <li><a href="https://cn.vuejs.org/v2/guide/conditional.html" class="nav-link" target="_blank">中文</a></li>
+    <li><a href="https://jp.vuejs.org/v2/guide/conditional.html" class="nav-link" target="_blank">日本語</a></li>
+    <li><a href="https://ru.vuejs.org/v2/guide/conditional.html" class="nav-link" target="_blank">Русский</a></li>
+    <li><a href="https://kr.vuejs.org/v2/guide/conditional.html" class="nav-link" target="_blank">한국어</a></li>
+    <li><a href="https://br.vuejs.org/v2/guide/conditional.html" class="nav-link" target="_blank">Português</a></li>
+    <li><a href="https://fr.vuejs.org/v2/guide/conditional.html" class="nav-link" target="_blank">Français</a></li>
+    <li><a href="https://vi.vuejs.org/v2/guide/conditional.html" class="nav-link" target="_blank">Tiếng Việt</a></li>
+  </ul>
+</li>
+
+
+  </ul>
+</div>
+
+    
+      <div id="main" class="fix-sidebar">
+        
+          
+  <div class="sidebar">
+  <div class="sidebar-inner">
+    <ul class="main-menu">
+      <li>
+  <form id="search-form">
+    <span class="algolia-autocomplete" style="position: relative; display: inline-block; direction: ltr;"><input type="text" id="search-query-sidebar" class="search-query st-default-search-input aa-input" autocomplete="off" spellcheck="false" role="combobox" aria-autocomplete="list" aria-expanded="false" aria-owns="algolia-autocomplete-listbox-2" dir="auto" style="position: relative; vertical-align: top;"><pre aria-hidden="true" style="position: absolute; visibility: hidden; white-space: pre; font-family: system-ui; font-size: 11px; font-style: normal; font-variant: normal; font-weight: 400; word-spacing: 0px; letter-spacing: normal; text-indent: 0px; text-rendering: auto; text-transform: none;"></pre><span class="aa-dropdown-menu" role="listbox" id="algolia-autocomplete-listbox-2" style="position: absolute; top: 100%; z-index: 100; display: none; left: 0px; right: auto;"><div class="aa-dataset-3"></div></span></span>
+  </form>
+</li>
+<li class="nav-dropdown-container learn">
+  <a class="nav-link current">Learn</a><span class="arrow"></span>
+  <ul class="nav-dropdown">
+    <li><ul>
+      <li><a href="https://vuejs.org/v2/guide/" class="nav-link current">Guide</a></li>
+      <li><a href="https://vuejs.org/v2/api/" class="nav-link">API</a></li>
+      <li><a href="https://vuejs.org/v2/style-guide/" class="nav-link">Style Guide</a></li>
+      <li><a href="https://vuejs.org/v2/examples/" class="nav-link">Examples</a></li>
+      <li><a href="https://vuejs.org/v2/cookbook/" class="nav-link">Cookbook</a></li>
+    </ul></li>
+  </ul>
+</li>
+
+<li class="nav-dropdown-container ecosystem">
+  <a class="nav-link">Ecosystem</a><span class="arrow"></span>
+  <ul class="nav-dropdown">
+    <li><h4>Help</h4></li>
+    <li><ul>
+      <li><a href="https://forum.vuejs.org/" class="nav-link" target="_blank">Forum</a></li>
+      <li><a href="https://chat.vuejs.org/" class="nav-link" target="_blank">Chat</a></li>
+    </ul></li>
+    <li><h4>Tooling</h4></li>
+    <li>
+      <ul>
+        <li><a href="https://github.com/vuejs/vue-devtools" class="nav-link" target="_blank">Devtools</a></li>
+        <li><a href="https://vuejs-templates.github.io/webpack" class="nav-link" target="_blank">Webpack Template</a></li>
+        <li><a href="https://vue-loader.vuejs.org/" class="nav-link" target="_blank">Vue Loader</a></li>
+      </ul>
+    </li>
+    <li><h4>Core Libraries</h4></li>
+    <li><ul>
+      <li><a href="https://router.vuejs.org/" class="nav-link" target="_blank">Vue Router</a></li>
+      <li><a href="https://vuex.vuejs.org/" class="nav-link" target="_blank">Vuex</a></li>
+      <li><a href="https://ssr.vuejs.org/" class="nav-link" target="_blank">Vue Server Renderer</a></li>
+    </ul></li>
+    <li><h4>News</h4></li>
+    <li><ul>
+      <li><a href="https://news.vuejs.org/" class="nav-link" target="_blank">Weekly News</a></li>
+      <li><a href="https://github.com/vuejs/roadmap" class="nav-link" target="_blank">Roadmap</a></li>
+      <li><a href="https://twitter.com/vuejs" class="nav-link" target="_blank">Twitter</a></li>
+      <li><a href="https://medium.com/the-vue-point" class="nav-link" target="_blank">Blog</a></li>
+      <li><a href="https://vuejobs.com/?ref=vuejs" class="nav-link" target="_blank">Jobs</a></li>
+    </ul></li>
+    <li><h4>Resource Lists</h4></li>
+    <li><ul>
+      <li><a href="https://github.com/vuejs" class="nav-link" target="_blank">Official Repos</a></li>
+      <li><a href="https://curated.vuejs.org/" class="nav-link" target="_blank">Vue Curated</a></li>
+      <li><a href="https://github.com/vuejs/awesome-vue" class="nav-link" target="_blank">Awesome Vue</a></li>
+    </ul></li>
+  </ul>
+</li>
+
+<li>
+  <a href="https://vuejs.org/v2/guide/team.html" class="nav-link team">Team</a>
+</li>
+<li class="nav-dropdown-container support-vue">
+  <a href="https://vuejs.org/support-vuejs/" class="nav-link">Support Vue</a><span class="arrow"></span>
+  <ul class="nav-dropdown">
+    <li><ul>
+      <li><a href="https://vuejs.org/support-vuejs/#One-time-Donations" class="nav-link">One-time Donations</a></li>
+      <li><a href="https://vuejs.org/support-vuejs/#Recurring-Pledges" class="nav-link">Recurring Pledges</a></li>
+      <li><a href="https://vue.threadless.com/" target="_blank" class="nav-link">T-Shirt Shop</a></li>
+    </ul></li>
+  </ul>
+</li>
+
+<li class="nav-dropdown-container language">
+  <a class="nav-link">Translations</a><span class="arrow"></span>
+  <ul class="nav-dropdown">
+    <li><a href="https://cn.vuejs.org/v2/guide/conditional.html" class="nav-link" target="_blank">中文</a></li>
+    <li><a href="https://jp.vuejs.org/v2/guide/conditional.html" class="nav-link" target="_blank">日本語</a></li>
+    <li><a href="https://ru.vuejs.org/v2/guide/conditional.html" class="nav-link" target="_blank">Русский</a></li>
+    <li><a href="https://kr.vuejs.org/v2/guide/conditional.html" class="nav-link" target="_blank">한국어</a></li>
+    <li><a href="https://br.vuejs.org/v2/guide/conditional.html" class="nav-link" target="_blank">Português</a></li>
+    <li><a href="https://fr.vuejs.org/v2/guide/conditional.html" class="nav-link" target="_blank">Français</a></li>
+    <li><a href="https://vi.vuejs.org/v2/guide/conditional.html" class="nav-link" target="_blank">Tiếng Việt</a></li>
+  </ul>
+</li>
+
+
+    </ul>
+    <div class="list">
+      <div id="sidebar-sponsors-special">
+  <div class="main-sponsor">
+    <span>Special Sponsors</span>
+    <div>
+    <a href="https://stdlib.com/" target="_blank" class="logo">
+      <img src="./Conditional Rendering — Vue.js_files/stdlib.png">
+    </a>
+    <a href="https://www.bitsrc.io/?utm_source=vue&amp;utm_medium=vue&amp;utm_campaign=vue&amp;utm_term=vue&amp;utm_content=vue" target="_blank" class="logo">
+      <img src="./Conditional Rendering — Vue.js_files/bit-wide.png">
+    </a>
+    </div>
+  </div>
+</div>
+
+<div id="sidebar-sponsors-platinum">
+  <div class="main-sponsor">
+    <span>Patreon Sponsors</span>
+    <div>
+    <a href="http://tooltwist.com/" target="_blank" class="logo">
+      <img src="./Conditional Rendering — Vue.js_files/tooltwist.png">
+    </a>
+    <a href="https://vueschool.io/?utm_source=Vuejs.org&amp;utm_medium=Banner&amp;utm_campaign=Sponsored%20Banner&amp;utm_content=V1" target="_blank" class="logo">
+      <img src="./Conditional Rendering — Vue.js_files/vueschool.png">
+    </a>
+    <a href="https://vehikl.com/" target="_blank" class="logo">
+      <img src="./Conditional Rendering — Vue.js_files/vehikl.png">
+    </a>
+    </div>
+  </div>
+  <a class="become-backer" href="https://vuejs.org/support-vuejs">
+    Become a Sponsor
+  </a>
+</div>
+
+      <h2>
+        
+        Guide
+        
+          <select class="version-select">
+            <option value="SELF" selected="">2.x</option>
+            <option value="v1">1.0</option>
+            <option value="012">0.12</option>
+            <option value="011">0.11</option>
+          </select>
+        
+      </h2>
+      <ul class="menu-root">
+  
+    
+    
+      
+        <li><h3>Essentials</h3></li>
+      
+      
+      
+      
+      
+      
+      
+      
+      
+    
+    <li>
+      <a href="https://vuejs.org/v2/guide/installation.html" class="sidebar-link">Installation</a>
+    </li>
+  
+    
+    
+      
+      
+      
+      
+      
+      
+      
+      
+      
+    
+    <li>
+      <a href="https://vuejs.org/v2/guide/index.html" class="sidebar-link">Introduction</a>
+    </li>
+  
+    
+    
+      
+      
+      
+      
+      
+      
+      
+      
+      
+    
+    <li>
+      <a href="https://vuejs.org/v2/guide/instance.html" class="sidebar-link">The Vue Instance</a>
+    </li>
+  
+    
+    
+      
+      
+      
+      
+      
+      
+      
+      
+      
+    
+    <li>
+      <a href="https://vuejs.org/v2/guide/syntax.html" class="sidebar-link">Template Syntax</a>
+    </li>
+  
+    
+    
+      
+      
+      
+      
+      
+      
+      
+      
+      
+    
+    <li>
+      <a href="https://vuejs.org/v2/guide/computed.html" class="sidebar-link">Computed Properties and Watchers</a>
+    </li>
+  
+    
+    
+      
+      
+      
+      
+      
+      
+      
+      
+      
+    
+    <li>
+      <a href="https://vuejs.org/v2/guide/class-and-style.html" class="sidebar-link">Class and Style Bindings</a>
+    </li>
+  
+    
+    
+      
+      
+      
+      
+      
+      
+      
+      
+      
+    
+    <li>
+      <a href="https://vuejs.org/v2/guide/conditional.html" class="sidebar-link current">Conditional Rendering</a>
+    <ul class="menu-sub"><li><a class="section-link" data-scroll="" href="https://vuejs.org/v2/guide/conditional.html#v-if">v-if</a></li><ul><li><a class="section-link" data-scroll="" href="https://vuejs.org/v2/guide/conditional.html#Conditional-Groups-with-v-if-on-lt-template-gt">Conditional Groups with v-if on &lt;template&gt;</a></li><li><a class="section-link" data-scroll="" href="https://vuejs.org/v2/guide/conditional.html#v-else">v-else</a></li><li><a class="section-link active" data-scroll="" href="https://vuejs.org/v2/guide/conditional.html#v-else-if">v-else-if</a></li><li><a class="section-link" data-scroll="" href="https://vuejs.org/v2/guide/conditional.html#Controlling-Reusable-Elements-with-key">Controlling Reusable Elements with key</a></li></ul><li><a class="section-link" data-scroll="" href="https://vuejs.org/v2/guide/conditional.html#v-show">v-show</a></li><li><a class="section-link" data-scroll="" href="https://vuejs.org/v2/guide/conditional.html#v-if-vs-v-show">v-if vs v-show</a></li><li><a class="section-link" data-scroll="" href="https://vuejs.org/v2/guide/conditional.html#v-if-with-v-for">v-if with v-for</a></li></ul></li>
+  
+    
+    
+      
+      
+      
+      
+      
+      
+      
+      
+      
+    
+    <li>
+      <a href="https://vuejs.org/v2/guide/list.html" class="sidebar-link">List Rendering</a>
+    </li>
+  
+    
+    
+      
+      
+      
+      
+      
+      
+      
+      
+      
+    
+    <li>
+      <a href="https://vuejs.org/v2/guide/events.html" class="sidebar-link">Event Handling</a>
+    </li>
+  
+    
+    
+      
+      
+      
+      
+      
+      
+      
+      
+      
+    
+    <li>
+      <a href="https://vuejs.org/v2/guide/forms.html" class="sidebar-link">Form Input Bindings</a>
+    </li>
+  
+    
+    
+      
+      
+      
+      
+      
+      
+      
+      
+      
+    
+    <li>
+      <a href="https://vuejs.org/v2/guide/components.html" class="sidebar-link">Components Basics</a>
+    </li>
+  
+    
+    
+      
+      
+        <li><h3>Components In-Depth</h3></li>
+      
+      
+      
+      
+      
+      
+      
+      
+    
+    <li>
+      <a href="https://vuejs.org/v2/guide/components-registration.html" class="sidebar-link">Component Registration</a>
+    </li>
+  
+    
+    
+      
+      
+      
+      
+      
+      
+      
+      
+      
+    
+    <li>
+      <a href="https://vuejs.org/v2/guide/components-props.html" class="sidebar-link">Props</a>
+    </li>
+  
+    
+    
+      
+      
+      
+      
+      
+      
+      
+      
+      
+    
+    <li>
+      <a href="https://vuejs.org/v2/guide/components-custom-events.html" class="sidebar-link">Custom Events</a>
+    </li>
+  
+    
+    
+      
+      
+      
+      
+      
+      
+      
+      
+      
+    
+    <li>
+      <a href="https://vuejs.org/v2/guide/components-slots.html" class="sidebar-link">Slots</a>
+    </li>
+  
+    
+    
+      
+      
+      
+      
+      
+      
+      
+      
+      
+    
+    <li>
+      <a href="https://vuejs.org/v2/guide/components-dynamic-async.html" class="sidebar-link">Dynamic &amp; Async Components</a>
+    </li>
+  
+    
+    
+      
+      
+      
+      
+      
+      
+      
+      
+      
+    
+    <li>
+      <a href="https://vuejs.org/v2/guide/components-edge-cases.html" class="sidebar-link">Handling Edge Cases</a>
+    </li>
+  
+    
+    
+      
+      
+      
+        <li><h3>Transitions &amp; Animation</h3></li>
+      
+      
+      
+      
+      
+      
+      
+    
+    <li>
+      <a href="https://vuejs.org/v2/guide/transitions.html" class="sidebar-link">Enter/Leave &amp; List Transitions</a>
+    </li>
+  
+    
+    
+      
+      
+      
+      
+      
+      
+      
+      
+      
+    
+    <li>
+      <a href="https://vuejs.org/v2/guide/transitioning-state.html" class="sidebar-link">State Transitions</a>
+    </li>
+  
+    
+    
+      
+      
+      
+      
+        <li><h3>Reusability &amp; Composition</h3></li>
+      
+      
+      
+      
+      
+      
+    
+    <li>
+      <a href="https://vuejs.org/v2/guide/mixins.html" class="sidebar-link">Mixins</a>
+    </li>
+  
+    
+    
+      
+      
+      
+      
+      
+      
+      
+      
+      
+    
+    <li>
+      <a href="https://vuejs.org/v2/guide/custom-directive.html" class="sidebar-link">Custom Directives</a>
+    </li>
+  
+    
+    
+      
+      
+      
+      
+      
+      
+      
+      
+      
+    
+    <li>
+      <a href="https://vuejs.org/v2/guide/render-function.html" class="sidebar-link">Render Functions &amp; JSX</a>
+    </li>
+  
+    
+    
+      
+      
+      
+      
+      
+      
+      
+      
+      
+    
+    <li>
+      <a href="https://vuejs.org/v2/guide/plugins.html" class="sidebar-link">Plugins</a>
+    </li>
+  
+    
+    
+      
+      
+      
+      
+      
+      
+      
+      
+      
+    
+    <li>
+      <a href="https://vuejs.org/v2/guide/filters.html" class="sidebar-link">Filters</a>
+    </li>
+  
+    
+    
+      
+      
+      
+      
+      
+        <li><h3>Tooling</h3></li>
+      
+      
+      
+      
+      
+    
+    <li>
+      <a href="https://vuejs.org/v2/guide/deployment.html" class="sidebar-link">Production Deployment</a>
+    </li>
+  
+    
+    
+      
+      
+      
+      
+      
+      
+      
+      
+      
+    
+    <li>
+      <a href="https://vuejs.org/v2/guide/single-file-components.html" class="sidebar-link">Single File Components</a>
+    </li>
+  
+    
+    
+      
+      
+      
+      
+      
+      
+      
+      
+      
+    
+    <li>
+      <a href="https://vuejs.org/v2/guide/unit-testing.html" class="sidebar-link">Unit Testing</a>
+    </li>
+  
+    
+    
+      
+      
+      
+      
+      
+      
+      
+      
+      
+    
+    <li>
+      <a href="https://vuejs.org/v2/guide/typescript.html" class="sidebar-link">TypeScript Support</a>
+    </li>
+  
+    
+    
+      
+      
+      
+      
+      
+      
+        <li><h3>Scaling Up</h3></li>
+      
+      
+      
+      
+    
+    <li>
+      <a href="https://vuejs.org/v2/guide/routing.html" class="sidebar-link">Routing</a>
+    </li>
+  
+    
+    
+      
+      
+      
+      
+      
+      
+      
+      
+      
+    
+    <li>
+      <a href="https://vuejs.org/v2/guide/state-management.html" class="sidebar-link">State Management</a>
+    </li>
+  
+    
+    
+      
+      
+      
+      
+      
+      
+      
+      
+      
+    
+    <li>
+      <a href="https://vuejs.org/v2/guide/ssr.html" class="sidebar-link">Server-Side Rendering</a>
+    </li>
+  
+    
+    
+      
+      
+      
+      
+      
+      
+      
+        <li><h3>Internals</h3></li>
+      
+      
+      
+    
+    <li>
+      <a href="https://vuejs.org/v2/guide/reactivity.html" class="sidebar-link">Reactivity in Depth</a>
+    </li>
+  
+    
+    
+      
+      
+      
+      
+      
+      
+      
+      
+        <li><h3>Migrating</h3></li>
+      
+      
+    
+    <li>
+      <a href="https://vuejs.org/v2/guide/migration.html" class="sidebar-link">Migration from Vue 1.x</a>
+    </li>
+  
+    
+    
+      
+      
+      
+      
+      
+      
+      
+      
+      
+    
+    <li>
+      <a href="https://vuejs.org/v2/guide/migration-vue-router.html" class="sidebar-link">Migration from Vue Router 0.7.x</a>
+    </li>
+  
+    
+    
+      
+      
+      
+      
+      
+      
+      
+      
+      
+    
+    <li>
+      <a href="https://vuejs.org/v2/guide/migration-vuex.html" class="sidebar-link">Migration from Vuex 0.6.x to 1.0</a>
+    </li>
+  
+    
+    
+      
+      
+      
+      
+      
+      
+      
+      
+      
+        <li><h3>Meta</h3></li>
+      
+    
+    <li>
+      <a href="https://vuejs.org/v2/guide/comparison.html" class="sidebar-link">Comparison with Other Frameworks</a>
+    </li>
+  
+    
+    
+      
+      
+      
+      
+      
+      
+      
+      
+      
+    
+    <li>
+      <a href="https://vuejs.org/v2/guide/join.html" class="sidebar-link">Join the Vue.js Community!</a>
+    </li>
+  
+    
+    
+      
+      
+      
+      
+      
+      
+      
+      
+      
+    
+    <li>
+      <a href="https://vuejs.org/v2/guide/team.html" class="sidebar-link">Meet the Team</a>
+    </li>
+  
+</ul>
+
+    </div>
+  </div>
+</div>
+
+
+<div class="content guide with-sidebar conditional-guide">
+  
+    
+      <div id="ad">
+  <script>
+    (function () {
+      var s = document.createElement('script')
+      s.setAttribute('async', '')
+      s.src = '//cdn.carbonads.com/carbon.js?zoneid=1673&serve=C6AILKT&placement=vuejs'
+      s.id = '_carbonads_js'
+      document.getElementById('ad').appendChild(s)
+    })()
+  </script><script async="" src="./Conditional Rendering — Vue.js_files/carbon.js" id="_carbonads_js"></script><div id="carbonads"><span><span class="carbon-wrap"><a href="https://srv.carbonads.net/ads/click/x/GTND42QLCK7ICK37CKB4YKQMCV7IC5QJFT7DCZ3JCW7DC237CA7IC27KC6BI6K7ICVAI6K3EHJNCLSIZ?segment=placement:vuejs;" class="carbon-img" target="_blank" rel="noopener"><img src="./Conditional Rendering — Vue.js_files/61453" alt="" border="0" height="100" width="130" style="max-width: 130px;"></a><a href="https://srv.carbonads.net/ads/click/x/GTND42QLCK7ICK37CKB4YKQMCV7IC5QJFT7DCZ3JCW7DC237CA7IC27KC6BI6K7ICVAI6K3EHJNCLSIZ?segment=placement:vuejs;" class="carbon-text" target="_blank" rel="noopener">See how your visitors are really using your website.</a></span><a href="http://carbonads.net/?utm_source=vuejs&amp;utm_medium=ad_via_link&amp;utm_campaign=in_unit&amp;utm_term=carbon" class="carbon-poweredby" target="_blank" rel="noopener">ads via Carbon</a></span></div>
+</div>
+
+    
+  
+  
+    <h1>Conditional Rendering</h1>
+  
+  
+    <h2 id="v-if"><a href="https://vuejs.org/v2/guide/conditional.html#v-if" class="headerlink" title="v-if" data-scroll=""><code>v-if</code></a></h2><p>In string templates, for example Handlebars, we would write a conditional block like this:</p>
+<figure class="highlight html"><table><tbody><tr><td class="code"><pre><span class="line"><span class="comment">&lt;!-- Handlebars template --&gt;</span></span><br><span class="line">{{#if ok}}</span><br><span class="line">  <span class="tag">&lt;<span class="name">h1</span>&gt;</span>Yes<span class="tag">&lt;/<span class="name">h1</span>&gt;</span></span><br><span class="line">{{/if}}</span><br></pre></td></tr></tbody></table></figure>
+<p>In Vue, we use the <code>v-if</code> directive to achieve the same:</p>
+<figure class="highlight html"><table><tbody><tr><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">h1</span> <span class="attr">v-if</span>=<span class="string">"ok"</span>&gt;</span>Yes<span class="tag">&lt;/<span class="name">h1</span>&gt;</span></span><br></pre></td></tr></tbody></table></figure>
+<p>It is also possible to add an “else block” with <code>v-else</code>:</p>
+<figure class="highlight html"><table><tbody><tr><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">h1</span> <span class="attr">v-if</span>=<span class="string">"ok"</span>&gt;</span>Yes<span class="tag">&lt;/<span class="name">h1</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">h1</span> <span class="attr">v-else</span>&gt;</span>No<span class="tag">&lt;/<span class="name">h1</span>&gt;</span></span><br></pre></td></tr></tbody></table></figure>
+<h3 id="Conditional-Groups-with-v-if-on-lt-template-gt"><a href="https://vuejs.org/v2/guide/conditional.html#Conditional-Groups-with-v-if-on-lt-template-gt" class="headerlink" title="Conditional Groups with v-if on &lt;template&gt;" data-scroll="">Conditional Groups with <code>v-if</code> on <code>&lt;template&gt;</code></a></h3><p>Because <code>v-if</code> is a directive, it has to be attached to a single element. But what if we want to toggle more than one element? In this case we can use <code>v-if</code> on a <code>&lt;template&gt;</code> element, which serves as an invisible wrapper. The final rendered result will not include the <code>&lt;template&gt;</code> element.</p>
+<figure class="highlight html"><table><tbody><tr><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">template</span> <span class="attr">v-if</span>=<span class="string">"ok"</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="name">h1</span>&gt;</span>Title<span class="tag">&lt;/<span class="name">h1</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="name">p</span>&gt;</span>Paragraph 1<span class="tag">&lt;/<span class="name">p</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="name">p</span>&gt;</span>Paragraph 2<span class="tag">&lt;/<span class="name">p</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">template</span>&gt;</span></span><br></pre></td></tr></tbody></table></figure>
+<h3 id="v-else"><a href="https://vuejs.org/v2/guide/conditional.html#v-else" class="headerlink" title="v-else" data-scroll=""><code>v-else</code></a></h3><p>You can use the <code>v-else</code> directive to indicate an “else block” for <code>v-if</code>:</p>
+<figure class="highlight html"><table><tbody><tr><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">div</span> <span class="attr">v-if</span>=<span class="string">"Math.random() &gt; 0.5"</span>&gt;</span></span><br><span class="line">  Now you see me</span><br><span class="line"><span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">div</span> <span class="attr">v-else</span>&gt;</span></span><br><span class="line">  Now you don't</span><br><span class="line"><span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br></pre></td></tr></tbody></table></figure>
+<p>A <code>v-else</code> element must immediately follow a <code>v-if</code> or a <code>v-else-if</code> element - otherwise it will not be recognized.</p>
+<h3 id="v-else-if" data-scroll-id="v-else-if" tabindex="-1" style="outline: none;"><a href="https://vuejs.org/v2/guide/conditional.html#v-else-if" class="headerlink" title="v-else-if" data-scroll=""><code>v-else-if</code></a></h3><blockquote>
+<p>New in 2.1.0+</p>
+</blockquote>
+<p>The <code>v-else-if</code>, as the name suggests, serves as an “else if block” for <code>v-if</code>. It can also be chained multiple times:</p>
+<figure class="highlight html"><table><tbody><tr><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">div</span> <span class="attr">v-if</span>=<span class="string">"type === 'A'"</span>&gt;</span></span><br><span class="line">  A</span><br><span class="line"><span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">div</span> <span class="attr">v-else-if</span>=<span class="string">"type === 'B'"</span>&gt;</span></span><br><span class="line">  B</span><br><span class="line"><span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">div</span> <span class="attr">v-else-if</span>=<span class="string">"type === 'C'"</span>&gt;</span></span><br><span class="line">  C</span><br><span class="line"><span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">div</span> <span class="attr">v-else</span>&gt;</span></span><br><span class="line">  Not A/B/C</span><br><span class="line"><span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br></pre></td></tr></tbody></table></figure>
+<p>Similar to <code>v-else</code>, a <code>v-else-if</code> element must immediately follow a <code>v-if</code> or a <code>v-else-if</code> element.</p>
+<h3 id="Controlling-Reusable-Elements-with-key" data-scroll-id="Controlling-Reusable-Elements-with-key" tabindex="-1" style="outline: none;"><a href="https://vuejs.org/v2/guide/conditional.html#Controlling-Reusable-Elements-with-key" class="headerlink" title="Controlling Reusable Elements with key" data-scroll="">Controlling Reusable Elements with <code>key</code></a></h3><p>Vue tries to render elements as efficiently as possible, often re-using them instead of rendering from scratch. Beyond helping make Vue very fast, this can have some useful advantages. For example, if you allow users to toggle between multiple login types:</p>
+<figure class="highlight html"><table><tbody><tr><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">template</span> <span class="attr">v-if</span>=<span class="string">"loginType === 'username'"</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="name">label</span>&gt;</span>Username<span class="tag">&lt;/<span class="name">label</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="name">input</span> <span class="attr">placeholder</span>=<span class="string">"Enter your username"</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">template</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">template</span> <span class="attr">v-else</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="name">label</span>&gt;</span>Email<span class="tag">&lt;/<span class="name">label</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="name">input</span> <span class="attr">placeholder</span>=<span class="string">"Enter your email address"</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">template</span>&gt;</span></span><br></pre></td></tr></tbody></table></figure>
+<p>Then switching the <code>loginType</code> in the code above will not erase what the user has already entered. Since both templates use the same elements, the <code>&lt;input&gt;</code> is not replaced - just its <code>placeholder</code>.</p>
+<p>Check it out for yourself by entering some text in the input, then pressing the toggle button:</p>
+
+<div id="no-key-example" class="demo"><div><label>Username</label> <input placeholder="Enter your username"></div> <button>Toggle login type</button></div>
+<script>
+new Vue({
+  el: '#no-key-example',
+  data: {
+    loginType: 'username'
+  },
+  methods: {
+    toggleLoginType: function () {
+      return this.loginType = this.loginType === 'username' ? 'email' : 'username'
+    }
+  }
+})
+</script>
+
+<p>This isn’t always desirable though, so Vue offers a way for you to say, “These two elements are completely separate - don’t re-use them.” Add a <code>key</code> attribute with unique values:</p>
+<figure class="highlight html"><table><tbody><tr><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">template</span> <span class="attr">v-if</span>=<span class="string">"loginType === 'username'"</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="name">label</span>&gt;</span>Username<span class="tag">&lt;/<span class="name">label</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="name">input</span> <span class="attr">placeholder</span>=<span class="string">"Enter your username"</span> <span class="attr">key</span>=<span class="string">"username-input"</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">template</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">template</span> <span class="attr">v-else</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="name">label</span>&gt;</span>Email<span class="tag">&lt;/<span class="name">label</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="name">input</span> <span class="attr">placeholder</span>=<span class="string">"Enter your email address"</span> <span class="attr">key</span>=<span class="string">"email-input"</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">template</span>&gt;</span></span><br></pre></td></tr></tbody></table></figure>
+<p>Now those inputs will be rendered from scratch each time you toggle. See for yourself:</p>
+
+<div id="key-example" class="demo"><div><label>Username</label> <input placeholder="Enter your username"></div> <button>Toggle login type</button></div>
+<script>
+new Vue({
+  el: '#key-example',
+  data: {
+    loginType: 'username'
+  },
+  methods: {
+    toggleLoginType: function () {
+      return this.loginType = this.loginType === 'username' ? 'email' : 'username'
+    }
+  }
+})
+</script>
+
+<p>Note that the <code>&lt;label&gt;</code> elements are still efficiently re-used, because they don’t have <code>key</code> attributes.</p>
+<h2 id="v-show"><a href="https://vuejs.org/v2/guide/conditional.html#v-show" class="headerlink" title="v-show" data-scroll=""><code>v-show</code></a></h2><p>Another option for conditionally displaying an element is the <code>v-show</code> directive. The usage is largely the same:</p>
+<figure class="highlight html"><table><tbody><tr><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">h1</span> <span class="attr">v-show</span>=<span class="string">"ok"</span>&gt;</span>Hello!<span class="tag">&lt;/<span class="name">h1</span>&gt;</span></span><br></pre></td></tr></tbody></table></figure>
+<p>The difference is that an element with <code>v-show</code> will always be rendered and remain in the DOM; <code>v-show</code> only toggles the <code>display</code> CSS property of the element.</p>
+<p class="tip">Note that <code>v-show</code> doesn’t support the <code>&lt;template&gt;</code> element, nor does it work with <code>v-else</code>.</p>
+
+<h2 id="v-if-vs-v-show"><a href="https://vuejs.org/v2/guide/conditional.html#v-if-vs-v-show" class="headerlink" title="v-if vs v-show" data-scroll=""><code>v-if</code> vs <code>v-show</code></a></h2><p><code>v-if</code> is “real” conditional rendering because it ensures that event listeners and child components inside the conditional block are properly destroyed and re-created during toggles.</p>
+<p><code>v-if</code> is also <strong>lazy</strong>: if the condition is false on initial render, it will not do anything - the conditional block won’t be rendered until the condition becomes true for the first time.</p>
+<p>In comparison, <code>v-show</code> is much simpler - the element is always rendered regardless of initial condition, with CSS-based toggling.</p>
+<p>Generally speaking, <code>v-if</code> has higher toggle costs while <code>v-show</code> has higher initial render costs. So prefer <code>v-show</code> if you need to toggle something very often, and prefer <code>v-if</code> if the condition is unlikely to change at runtime.</p>
+<h2 id="v-if-with-v-for"><a href="https://vuejs.org/v2/guide/conditional.html#v-if-with-v-for" class="headerlink" title="v-if with v-for" data-scroll=""><code>v-if</code> with <code>v-for</code></a></h2><p>When used together with <code>v-if</code>, <code>v-for</code> has a higher priority than <code>v-if</code>. See the <a href="https://vuejs.org/v2/guide/list.html#V-for-and-v-if">list rendering guide</a> for details.</p>
+
+  
+  
+    <div class="guide-links">
+      
+      
+        <span>← <a href="https://vuejs.org/v2/guide/class-and-style.html">Class and Style Bindings</a></span>
+      
+      
+      
+        <span style="float: right;"><a href="https://vuejs.org/v2/guide/list.html">List Rendering</a> →</span>
+      
+    </div>
+  
+  <div class="footer">
+      <script src="./Conditional Rendering — Vue.js_files/monetization.js" type="text/javascript"></script>
+<div class="bsa-cpc"><div id="_default_" data-attributes="{&quot;type&quot;:&quot;default&quot;,&quot;key&quot;:&quot;CKYD62QM&quot;,&quot;segment&quot;:&quot;placement:vuejsorg&quot;,&quot;options&quot;:{&quot;target&quot;:&quot;.bsa-cpc&quot;,&quot;align&quot;:&quot;horizontal&quot;,&quot;disable_css&quot;:&quot;true&quot;,&quot;script_id&quot;:&quot;_bsa_srv-CKYD62QM_0&quot;,&quot;platforms&quot;:[&quot;desktop&quot;,&quot;mobile&quot;]},&quot;ads&quot;:[{&quot;active&quot;:&quot;1&quot;,&quot;backgroundColor&quot;:&quot;#FFFFFF&quot;,&quot;backgroundHoverColor&quot;:&quot;#FFFFFF&quot;,&quot;bannerid&quot;:&quot;79236&quot;,&quot;callToAction&quot;:&quot;Get Your Free Trial&quot;,&quot;company&quot;:&quot;Monday.com&quot;,&quot;creativeid&quot;:&quot;168303&quot;,&quot;ctaBackgroundColor&quot;:&quot;#585AD5&quot;,&quot;ctaBackgroundHoverColor&quot;:&quot;#585AD5&quot;,&quot;ctaTextColor&quot;:&quot;#FFFFFF&quot;,&quot;ctaTextColorHover&quot;:&quot;#FFFFFF&quot;,&quot;description&quot;:&quot;The revolutionary project management tool is here and it’s visual. Start Your Free Trial Now&quot;,&quot;evenodd&quot;:&quot;0&quot;,&quot;external_id&quot;:&quot;1034&quot;,&quot;height&quot;:&quot;0&quot;,&quot;i&quot;:&quot;0&quot;,&quot;image&quot;:&quot;https://cdn4.buysellads.net/uu/1/1724/1522788624-purple_logo_80x80.png&quot;,&quot;logo&quot;:&quot;https://cdn4.buysellads.net/uu/1/1724/1522788633-logo-250-100.png&quot;,&quot;longimp&quot;:&quot;T4GMRI4BTTTTTT3WDUCMWTTTTTT2X555ZVTTTTTTNTWKYNETTTTTT&quot;,&quot;longlink&quot;:&quot;TCGMRI4BTTTTTT3WDUCMWTTTTTT2X555ZVTTTTTTNTWKYNETTTTTTBDW5JYFC5JGHRENVZI62RBN6SDHK2NCLYSZH7UCPR3GKJLCBZSW5QENCBSD2JMLOIJUCVADLK37HYSIC23MFTS6CEPLVQFWAEP6PKU6AJPWHR3D6K3NCW7DE2QWHY7D4K7LCAAI45QUF2LCCUSW5QMMOYZQKEOIVKQNFTYITKQWFTRNVYBX5J7CNUSD2HLDB5Q7F67DKKJJCTRNVYBX2JEUVGQSKJJMOAI62HLDB5SWKHIMO7IG5QGNCBDQ2JLHO7DQ5QLNCRDHKJGUVAIHKHBCB7Z55EOE&quot;,&quot;pixel&quot;:&quot;https://ad.doubleclick.net/ddm/trackimp/N728909.734586CARBONADS.NET/B20652854.213279197;dc_trk_aid=416810148;dc_trk_cid=99926210;ord=[timestamp];dc_lat=;dc_rdid=;tag_for_child_directed_treatment=?&quot;,&quot;rendering&quot;:&quot;&quot;,&quot;statimp&quot;:&quot;//srv.buysellads.com/ads/imp/x/GTND42QLCK7IVK7ECTSLYKQMCV7IC5QJCAAIKZ3JCW7DC237CABDC5QKC6BI6K7ICVAI6K3EHJWNBADLKM7UCBZG2Y&quot;,&quot;statlink&quot;:&quot;//srv.buysellads.com/ads/click/x/GTND42QLCK7IVK7ECTSLYKQMCV7IC5QJCAAIKZ3JCW7DC237CABDC5QKC6BI6K7ICVAI6K3EHJNCLSIZ&quot;,&quot;textColor&quot;:&quot;#585AD5&quot;,&quot;textColorHover&quot;:&quot;#585AD5&quot;,&quot;timestamp&quot;:&quot;1523330865&quot;,&quot;title&quot;:&quot;Monday.com&quot;,&quot;width&quot;:&quot;0&quot;,&quot;zoneid&quot;:&quot;30255&quot;,&quot;zonekey&quot;:&quot;CKYD62QM&quot;}]}"><span class="default-ad">ad</span><a href="https://srv.buysellads.com/ads/click/x/GTND42QLCK7IVK7ECTSLYKQMCV7IC5QJCAAIKZ3JCW7DC237CABDC5QKC6BI6K7ICVAI6K3EHJNCLSIZ?segment=placement:vuejsorg;" target="_blank" rel="nofollow noopener" class="_default_"><span class="default-image"><img src="./Conditional Rendering — Vue.js_files/1522788624-purple_logo_80x80.png"></span><span class="default-title">Monday.com</span><span class="default-description">The revolutionary project management tool is here and it’s visual. Start Your Free Trial Now</span></a><img src="./Conditional Rendering — Vue.js_files/B20652854.213279197" style="display:none;" height="0" width="0"></div></div>
+<script>
+  (function(){
+    if(typeof _bsa !== 'undefined' && _bsa) {
+    _bsa.init('default', 'CKYD62QM', 'placement:vuejsorg', {
+      target: '.bsa-cpc',
+      align: 'horizontal',
+      disable_css: 'true'
+    });
+      }
+  })();
+</script>
+
+    Caught a mistake or want to contribute to the documentation?
+    <a href="https://github.com/vuejs/vuejs.org/blob/master/src/v2/guide/conditional.md" target="_blank">
+      Edit this page on GitHub!
+    </a>
+  </div>
+</div>
+
+        
+      </div>
+      <script src="./Conditional Rendering — Vue.js_files/smooth-scroll.min.js"></script>
+    
+
+    <!-- main custom script for sidebars, version selects etc. -->
+    <script src="./Conditional Rendering — Vue.js_files/css.escape.js"></script>
+    <script src="./Conditional Rendering — Vue.js_files/common.js"></script>
+
+    <!-- search -->
+    <link href="./Conditional Rendering — Vue.js_files/docsearch.min.css" rel="stylesheet" type="text/css">
+    <link rel="stylesheet" href="./Conditional Rendering — Vue.js_files/search.css">
+    <script src="./Conditional Rendering — Vue.js_files/docsearch.min.js"></script>
+    <script>
+    [
+      '#search-query-nav',
+      '#search-query-sidebar',
+      '#search-query-menu'
+    ].forEach(function (selector) {
+      if (!document.querySelector(selector)) return
+      // search index defaults to v2
+      var match = window.location.pathname.match(/^\/(v\d+)/)
+      var version = match ? match[1] : 'v2'
+      docsearch({
+      appId: 'BH4D9OD16A',
+      apiKey: '85cc3221c9f23bfbaa4e3913dd7625ea',
+      indexName: 'vuejs',
+      inputSelector: selector,
+      algoliaOptions: { facetFilters: ["version:" + version] }
+      })
+    })
+    </script>
+
+    <!-- fastclick -->
+    <script src="./Conditional Rendering — Vue.js_files/fastclick.min.js"></script>
+    <script>
+    document.addEventListener('DOMContentLoaded', function() {
+      FastClick.attach(document.body)
+    }, false)
+    </script>
+  
+
+</body></html>
